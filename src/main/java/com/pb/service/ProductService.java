@@ -2,6 +2,7 @@ package com.pb.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.pb.dto.ProductDto;
 import com.pb.entity.Catagory;
 import com.pb.entity.Product;
+import com.pb.exception.ProductNotFoundException;
 import com.pb.repo.ProductRepo;
 
 @Service
@@ -62,6 +64,16 @@ public class ProductService {
 		products.setImageUrl(productDto.getImageUrl());
 		
 		productRepo.save(products);
+	}
+
+	public Product findById(Integer productId) {
+	Optional<Product> product= productRepo.findById(productId);
+	if(Objects.isNull(product)) {
+		throw new ProductNotFoundException("Product is not found");
+	}
+	
+	return product.get();
+		
 	}
 
 }

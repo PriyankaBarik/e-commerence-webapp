@@ -1,9 +1,12 @@
 package com.pb.exception;
 
-import org.hibernate.boot.model.naming.IllegalIdentifierException;
-
 public class AuthenticationFailException  extends IllegalArgumentException{
    
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public AuthenticationFailException(String msg) {
 		super(msg);
 	}

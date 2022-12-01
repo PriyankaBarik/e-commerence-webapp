@@ -20,4 +20,11 @@ public class ExceptionControllerAdvice {
 		return new ResponseEntity<String>(exception.getMessage(),HttpStatus.BAD_REQUEST);
 	}
 	
+	
+
+	@ExceptionHandler(value= ProductNotFoundException.class)
+	public final ResponseEntity<String> handleProductNotFoundException(ProductNotFoundException exception){
+		return new ResponseEntity<String>(exception.getMessage(),HttpStatus.BAD_REQUEST);
+	}
+	
 }
